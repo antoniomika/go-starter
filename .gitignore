@@ -1,0 +1,4 @@
+deploy/
+dist/
+go-starter
+__debug_bin

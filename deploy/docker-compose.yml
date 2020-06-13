@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  go-starter:
+    image: antoniomika/go-starter:latest
+    container_name: go-starter
+    volumes:
+      - ./data:/data
+    command: |
+      -h
+    restart: always
