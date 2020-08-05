@@ -36,4 +36,4 @@ archives:
     files:
       - LICENSE*
       - README*
-      - deploy/data/
+      - deploy/

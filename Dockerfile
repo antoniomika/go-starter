@@ -26,12 +26,10 @@ RUN go generate ./...
 RUN go test ./...
 RUN go build -o /go/bin/${APP_NAME} -ldflags="-s -w -X github.com/${REPOSITORY}/cmd.Version=${VERSION} -X github.com/${REPOSITORY}/cmd.Commit=${COMMIT} -X github.com/${REPOSITORY}/cmd.Date=${DATE}"
 
-FROM alpine
+FROM scratch as release
 LABEL maintainer="Antonio Mika <me@antoniomika.me>"
 
 WORKDIR /app
-
-RUN apk add --no-cache git docker-cli docker-compose
 
 COPY --from=builder /app/deploy/ /app/deploy/
 COPY --from=builder /app/README* /app/LICENSE* /app/
