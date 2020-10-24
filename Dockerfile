@@ -8,7 +8,6 @@ ARG VERSION=dev
 ARG COMMIT=none
 ARG DATE=unknown
 ARG REPOSITORY=unknown
-ARG APP_NAME=unknown
 
 WORKDIR /app
 
