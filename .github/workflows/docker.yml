@@ -37,6 +37,10 @@ jobs:
           BRANCH_NAME="${GITHUB_HEAD_REF#refs/heads/}"
         fi
 
+        if [[ "${BRANCH_NAME}" == *"/"* ]]; then
+          BRANCH_NAME="${BRANCH_NAME//\//-}"
+        fi
+
         DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
         REF="${BRANCH_NAME:-master}"
         OTHER_ARGS=""
