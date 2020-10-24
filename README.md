@@ -26,4 +26,5 @@ Flags:
       --log-to-stdout                 Enable writing log output to stdout (default true)
       --time-format string            The time format to use for general log messages (default "2006/01/02 - 15:04:05")
   -v, --version                       version for go-starter
+  -m, --mork                          Enable mork
 ```
