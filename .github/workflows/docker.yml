@@ -75,7 +75,6 @@ jobs:
           --build-arg REPOSITORY=${GITHUB_REPOSITORY} \
           -t ${GITHUB_REPOSITORY}:${GITHUB_SHA} \
           -t ${GITHUB_REPOSITORY}:${REF} \
-          -f Dockerfile.buildkit \
           ${OTHER_ARGS} ${OTHER_PUSH_ARGS} .
 
         if [[ "${OTHER_ARGS}" != *"--load"* ]]; then
@@ -88,7 +87,6 @@ jobs:
             --build-arg REPOSITORY=${GITHUB_REPOSITORY} \
             -t ${GITHUB_REPOSITORY}:${GITHUB_SHA} \
             -t ${GITHUB_REPOSITORY}:${REF} \
-            -f Dockerfile.buildkit \
             ${OTHER_ARGS} --load .
         fi
 
@@ -100,7 +98,6 @@ jobs:
             --build-arg DATE=${DATE} \
             --build-arg REPOSITORY=${GITHUB_REPOSITORY} \
             -t ${GITHUB_REPOSITORY}-build-cache:latest \
-            -f Dockerfile.buildkit \
             ${OTHER_PUSH_ARGS} .
         fi
 
