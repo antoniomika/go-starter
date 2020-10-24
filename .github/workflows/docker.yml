@@ -87,7 +87,7 @@ jobs:
             --build-arg REPOSITORY=${GITHUB_REPOSITORY} \
             -t ${GITHUB_REPOSITORY}:${GITHUB_SHA} \
             -t ${GITHUB_REPOSITORY}:${REF} \
-            ${OTHER_ARGS} --load .
+            --load .
         fi
 
         if [[ "${GITHUB_ACTOR}" == "${GITHUB_REPOSITORY%/*}" ]]; then
