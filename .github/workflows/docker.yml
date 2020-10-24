@@ -31,7 +31,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push the Docker images
       run: |
-        BRANCH_NAME="${${GITHUB_REF#refs/heads/}##refs/pull/}"
+        BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+
+        if [[ "${GITHUB_REF}" =~ ^refs\/pull\/.*$ ]]; then
+          BRANCH_NAME="${GITHUB_HEAD_REF#refs/heads/}"
+        fi
+
         DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
         REF="${BRANCH_NAME:-master}"
         OTHER_ARGS=""
