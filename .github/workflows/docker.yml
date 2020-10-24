@@ -101,4 +101,4 @@ jobs:
             ${OTHER_PUSH_ARGS} .
         fi
 
-        docker run -it --rm ${GITHUB_REPOSITORY}:${GITHUB_SHA} -v
+        docker run --rm ${GITHUB_REPOSITORY}:${GITHUB_SHA} -v
