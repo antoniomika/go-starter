@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/antoniomika/go-starter/exp"
 	"github.com/antoniomika/go-starter/utils"
@@ -26,12 +27,15 @@ var (
 	// Date describes the date of the current build.
 	Date = "unknown"
 
+	// ProgramName describes the name of the current program
+	ProgramName = "go-starter"
+
 	// configFile holds the location of the config file from CLI flags.
 	configFile string
 
 	// rootCmd is the root cobra command.
 	rootCmd = &cobra.Command{
-		Use:     "go-starter",
+		Use:     ProgramName,
 		Short:   "The go-starter command",
 		Long:    "The go-starter command",
 		Run:     runCommand,
@@ -48,7 +52,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&configFile, "config", "c", "config.yml", "Config file")
 
 	rootCmd.PersistentFlags().StringP("time-format", "", "2006/01/02 - 15:04:05", "The time format to use for general log messages")
-	rootCmd.PersistentFlags().StringP("log-to-file-path", "", "/tmp/go-starter.log", "The file to write log output to")
+	rootCmd.PersistentFlags().StringP("log-to-file-path", "", fmt.Sprintf("/tmp/%s.log", ProgramName), "The file to write log output to")
 	rootCmd.PersistentFlags().StringP("data-directory", "", "deploy/data/", "Directory that holds data")
 
 	rootCmd.PersistentFlags().BoolP("debug", "", false, "Enable debugging information")
@@ -71,6 +75,10 @@ func initConfig() {
 		log.Println("Unable to bind pflags:", err)
 	}
 
+	envReplacer := strings.NewReplacer("-", "_")
+
+	viper.SetEnvPrefix(envReplacer.Replace(ProgramName))
+	viper.SetEnvKeyReplacer(envReplacer)
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err == nil {
