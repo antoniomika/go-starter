@@ -27,7 +27,7 @@ var (
 	// Date describes the date of the current build.
 	Date = "unknown"
 
-	// ProgramName describes the name of the current program
+	// ProgramName describes the name of the current program.
 	ProgramName = "go-starter"
 
 	// configFile holds the location of the config file from CLI flags.
