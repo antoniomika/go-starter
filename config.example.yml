@@ -8,4 +8,4 @@ log-to-file-max-backups: 3
 log-to-file-max-size: 500
 log-to-file-path: /tmp/go-starter.log
 log-to-stdout: true
-time-format: 2006/01/02 - 15:04:05
+time-format: 2006/01/02 - 15:04:0
